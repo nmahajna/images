@@ -23,4 +23,19 @@ class Image {
     private final String url;
     private final String display_name;
     private final Integer duration;
+    public void validate() {
+        // validate the image duration is more that 1000 and shorter that 15000
+        if (duration < 1000 || duration > 15000) {
+            throw new IllegalArgumentException("The duration of the image must be between 1000 and 15000");
+        }
+        //validate the image url is not empty and is a valid url syntax
+        if (url.isEmpty() || !url.matches("^(http|https)://.*$")) {
+            throw new IllegalArgumentException("The url of the image must be a valid url");
+        }
+
+        //validate the image display name is not empty
+        if (display_name.isEmpty()) {
+            throw new IllegalArgumentException("The display name of the image must not be empty");
+        }
+    }
 }
