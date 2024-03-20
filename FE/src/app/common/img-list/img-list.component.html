@@ -1,0 +1,15 @@
+
+<div class="container">
+  <input type="text" class="form-control" placeholder="Image URL" [(ngModel)]="imgUrl">
+  <input type="text" class="form-control" placeholder="Display Name" [(ngModel)]="imgDisplayName">
+  <input type="text" class="form-control" placeholder="Duration" [(ngModel)]="imgDuration">
+  <button class="btn btn-primary" (click)="addImg(imgUrl, imgDisplayName, imgDuration)">Add</button>
+
+</div>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let img of imagesInput; let i = index">
+	<div  class="font">{{img.display_name}}</div>
+  <div  class="font">{{img.duration/ 1000}} s </div>
+
+	<button class="btn btn-danger" (click)="deleteImg(img.display_name)">Delete</button>
+  </li>
