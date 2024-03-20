@@ -52,7 +52,17 @@ class ImageController {
     }
 
     @PostMapping(ADD_PATH)
-    ResponseEntity<Void> insert(@RequestBody Image image) {
+    ResponseEntity<String> insert(@RequestBody Image image) {
+        try {
+            image.validate();
+        } catch (IllegalArgumentException e) {
+            return badRequest().body(e.getMessage());
+        }
+        try {
+            image.validate();
+        } catch (IllegalArgumentException e) {
+            return badRequest().body(e.getMessage());
+        }
         return imageService.insert(image) ? status(CREATED).build() : badRequest().build();
     }
 
