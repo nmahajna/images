@@ -23,6 +23,10 @@ constructor(private api: APIService) { }
 
 
 addImg(url: string, display_name: string, duration: number) {
+  if (duration < 1000) {
+    console.log('duration is too short');
+    return;
+  }
   const input = {
     url: url,
     display_name: display_name,
